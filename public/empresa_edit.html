@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCCv5 • Editar Empresa</title><link rel="stylesheet" href="/css/styles.css"></head>
+<body onload="ensureAuth()">
+  <nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img class="brand-logo" src="/img/logo-placeholder.svg" width="24" height="24" alt="logo">
+      <strong class="brand-name">TCCv5</strong>
+    </div>
+    <div class="menu">
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/empresas.html">Empresas</a>
+      <a href="/nova_empresa.html">Nova Empresa</a>
+      <a href="/usuarios.html">Usuários</a>
+      <a href="/configuracoes.html">Configurações</a>
+      <a href="#" data-action="logout">Sair</a>
+    </div>
+    <button class="hamb" type="button" data-action="open-drawer"
+        aria-controls="drawer" aria-expanded="false" aria-label="Abrir menu">☰</button>
+
+  </div>
+</nav>
+<div id="drawer-backdrop" class="drawer-backdrop"></div>
+<div id="drawer" class="drawer">
+  <div class="brand" style="margin-bottom:12px">
+    <img class="brand-logo" src="/img/logo-placeholder.svg" width="20" height="20" alt="logo">
+    <strong class="brand-name">TCCv5</strong>
+  </div>
+  <button class="badge" type="button" data-action="close-drawer" style="margin-bottom:8px">Fechar</button>
+
+  <div class="list">
+    <a href="/dashboard.html" onclick="closeDrawer()">Dashboard</a>
+    <a href="/empresas.html" onclick="closeDrawer()">Empresas</a>
+    <a href="/nova_empresa.html" onclick="closeDrawer()">Nova Empresa</a>
+    <a href="/usuarios.html" onclick="closeDrawer()">Usuários</a>
+    <a href="/configuracoes.html" onclick="closeDrawer()">Configurações</a>
+    <a href="#" data-action="logout">Sair</a>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="card">
+      <h3>Editar Empresa</h3>
+      <form id="form" class="grid grid-12"></form>
+      
+      <div class="grid grid-12" style="margin-top:8px">
+        <div class="col-12"><h4>Assinatura (opcional)</h4></div>
+        <div class="col-12"><canvas id="signPadEdit" class="sig" width="800" height="180" style="width:100%"></canvas></div>
+        <div class="col-12" style="display:flex;gap:8px;margin-top:8px">
+          <button type="button" class="badge" id="btnClearSignEdit">Limpar</button>
+          <button type="button" class="badge" id="btnConfirmSignEdit">Confirmar Assinatura</button>
+        </div>
+      </div>
+<div style="display:flex;gap:10px;margin-top:10px">
+        <button class="primary" id="btnSave">Salvar</button>
+        <button class="badge" id="btnPdf">Imprimir PDF</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast"></div>
+<script src="/js/app.js"></script><script src="/js/empresa_edit.js"></script></body></html>

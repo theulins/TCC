@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCCv5 • Nova Empresa</title><link rel="stylesheet" href="/css/styles.css"></head>
+<body onload="ensureAuth()">
+  <nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img class="brand-logo" src="/img/logo-placeholder.svg" width="24" height="24" alt="logo">
+      <strong class="brand-name">TCCv5</strong>
+    </div>
+    <div class="menu">
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/empresas.html">Empresas</a>
+      <a href="/nova_empresa.html">Nova Empresa</a>
+      <a href="/usuarios.html">Usuários</a>
+      <a href="/configuracoes.html">Configurações</a>
+      <a href="#" data-action="logout">Sair</a>
+    </div>
+    <button class="hamb" type="button" data-action="open-drawer"
+        aria-controls="drawer" aria-expanded="false" aria-label="Abrir menu">☰</button>
+
+  </div>
+</nav>
+<div id="drawer-backdrop" class="drawer-backdrop"></div>
+<div id="drawer" class="drawer">
+  <div class="brand" style="margin-bottom:12px">
+    <img class="brand-logo" src="/img/logo-placeholder.svg" width="20" height="20" alt="logo">
+    <strong class="brand-name">TCCv5</strong>
+  </div>
+  <button class="badge" type="button" data-action="close-drawer" style="margin-bottom:8px">Fechar</button>
+
+  <div class="list">
+    <a href="/dashboard.html" onclick="closeDrawer()">Dashboard</a>
+    <a href="/empresas.html" onclick="closeDrawer()">Empresas</a>
+    <a href="/nova_empresa.html" onclick="closeDrawer()">Nova Empresa</a>
+    <a href="/usuarios.html" onclick="closeDrawer()">Usuários</a>
+    <a href="/configuracoes.html" onclick="closeDrawer()">Configurações</a>
+    <a href="#" data-action="logout">Sair</a>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="card">
+      <h3>Proposta de Admissão de Sócio</h3>
+      <div class="grid grid-12" style="margin-bottom:8px">
+        <div class="col-6"><label>CNPJ</label><input id="lookupCnpj" placeholder="00.000.000/0000-00"></div>
+        <div class="col-2"><button class="badge" id="btnLookupCnpj" style="margin-top:28px">Buscar</button></div>
+      </div>
+      <form id="form" class="grid grid-12">
+        <div class="col-6"><label>Razão Social</label><input id="corporate_name"></div>
+        <div class="col-6"><label>Denominação Comercial</label><input id="fantasy_name"></div>
+        <div class="col-12"><label>Endereço</label><input id="address"></div>
+        <div class="col-3"><label>CEP</label><input id="zip"></div>
+        <div class="col-5"><label>E-mail</label><input id="email" type="email"></div>
+        <div class="col-4"><label>Instagram</label><input id="instagram"></div>
+        <div class="col-4"><label>Telefone</label><input id="phone"></div>
+        <div class="col-4"><label>Cidade</label><input id="city"></div>
+        <div class="col-4"><label>Estado</label><input id="state"></div>
+        <div class="col-4"><label>CEL</label><input id="cel"></div>
+        <div class="col-4"><label>WhatsApp</label><input id="whatsapp"></div>
+        <div class="col-6"><label>CNPJ</label><input id="cnpj"></div>
+        <div class="col-6"><label>Inscrição Estadual</label><input id="ie"></div>
+        <div class="col-12"><label>Ramo de Atividade</label><input id="business_activity"></div>
+        <div class="col-4"><label>Data Fundação</label><input id="foundation_date" placeholder="dd/mm/aaaa"></div>
+        <div class="col-4"><label>Qtd. Funcionários</label><input id="employees_qty" type="number" min="0"></div>
+        <div class="col-4"><label>Setor</label><input id="sector"></div>
+        <div class="col-6"><label>Esc. de Contabilidade</label><input id="accounting_firm"></div>
+        <div class="col-6"><label>Indicação de</label><input id="referral"></div>
+        <div class="col-12"><label>Observação</label><textarea id="notes" rows="3"></textarea></div>
+        <div class="col-12"><h4>Serviços Contratados</h4></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_spc"> SPC</label></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_nfe"> NF-e</label></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_nfce"> NFC-e</label></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_mdfe"> MDF-e</label></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_cte"> CT-e</label></div>
+        <div class="col-2"><label><input type="checkbox" id="svc_cfe"> CF-e</label></div>
+        <div class="col-12"><label>OBS (Serviços)</label><textarea id="services_obs" rows="2"></textarea></div>
+        <div class="col-4"><label>Tipo</label><input id="plan_type"></div>
+        <div class="col-4"><label>Valor</label><input id="plan_value"></div>
+        <div class="col-4"><label>Vencimento</label><input id="due_date" placeholder="dd/mm/aaaa"></div>
+      
+        <div class="col-12"><h4>Assinatura</h4></div>
+        <div class="col-12"><canvas id="signPad" class="sig" width="800" height="200" style="width:100%"></canvas></div>
+        <div class="col-12" style="display:flex;gap:8px;margin-top:8px">
+          <button type="button" class="badge" id="btnClearSign">Limpar</button>
+          <button type="button" class="badge" id="btnConfirmSign">Confirmar Assinatura</button>
+        </div>
+</form>
+      <button class="primary" id="btnSave">Salvar (gera PDF v1)</button>
+    </div>
+  </div>
+  <div id="toast"></div>
+<script src="/js/app.js"></script><script src="/js/nova_empresa.js"></script></body></html>

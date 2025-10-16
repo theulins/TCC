@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCCv5 • Empresas</title><link rel="stylesheet" href="/css/styles.css"></head>
+<body onload="ensureAuth()">
+  <nav class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img class="brand-logo" src="/img/logo-placeholder.svg" width="24" height="24" alt="logo">
+      <strong class="brand-name">TCCv5</strong>
+    </div>
+    <div class="menu">
+      <a href="/dashboard.html">Dashboard</a>
+      <a href="/empresas.html">Empresas</a>
+      <a href="/nova_empresa.html">Nova Empresa</a>
+      <a href="/usuarios.html">Usuários</a>
+      <a href="/configuracoes.html">Configurações</a>
+      <a href="#" data-action="logout">Sair</a>
+    </div>
+    <button class="hamb" type="button" data-action="open-drawer"
+        aria-controls="drawer" aria-expanded="false" aria-label="Abrir menu">☰</button>
+
+  </div>
+</nav>
+<div id="drawer-backdrop" class="drawer-backdrop"></div>
+<div id="drawer" class="drawer">
+  <div class="brand" style="margin-bottom:12px">
+    <img class="brand-logo" src="/img/logo-placeholder.svg" width="20" height="20" alt="logo">
+    <strong class="brand-name">TCCv5</strong>
+  </div>
+  <button class="badge" type="button" data-action="close-drawer" style="margin-bottom:8px">Fechar</button>
+
+  <div class="list">
+    <a href="/dashboard.html" onclick="closeDrawer()">Dashboard</a>
+    <a href="/empresas.html" onclick="closeDrawer()">Empresas</a>
+    <a href="/nova_empresa.html" onclick="closeDrawer()">Nova Empresa</a>
+    <a href="/usuarios.html" onclick="closeDrawer()">Usuários</a>
+    <a href="/configuracoes.html" onclick="closeDrawer()">Configurações</a>
+    <a href="#" data-action="logout">Sair</a>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="card">
+      <div class="grid grid-12" style="align-items:end">
+        <div class="col-6"><label>Busca</label><input id="q" placeholder="Nome ou CNPJ"></div>
+      </div>
+      <table class="table" id="tbl"><thead><tr><th>Fantasia</th><th>CNPJ</th><th>Cidade</th><th>Atualizado</th><th>Ações</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+  <div id="toast"></div>
+<script src="/js/app.js"></script><script src="/js/empresas.js"></script></body></html>
